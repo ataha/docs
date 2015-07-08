@@ -1,0 +1,25 @@
+################################################################
+CREATE USER 'travelbucket_usr'@'localhost' IDENTIFIED BY  '***';
+GRANT USAGE ON * . * TO  'travelbucket_usr'@'localhost' IDENTIFIED BY  '***' WITH MAX_QUERIES_PER_HOUR 0 MAX_CONNECTIONS_PER_HOUR 0 MAX_UPDATES_PER_HOUR 0 MAX_USER_CONNECTIONS 0 ;
+#################################################################
+GRANT USAGE ON  `travelbucket\_db` . * TO  'travelbucket_usr'@'localhost';
+#################################################################
+GRANT SELECT , UPDATE , SHOW VIEW ON  `travelbucket\_db` . * TO  'travelbucket_usr'@'localhost';
+###################################
+##############################
+#####TO CHECK USER PRIVILIAGES
+SHOW GRANTS FOR 'root'@'localhost';
+
+
+
+
+
+
+#TO COPY TABLE
+CREATE TABLE newtable LIKE oldtable; 
+INSERT newtable SELECT * FROM oldtable;
+
+
+#TO COPY DATABASE;
+
+

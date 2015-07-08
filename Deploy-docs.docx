@@ -1,0 +1,56 @@
+####How to install composer on server################
+
+Composer offers a convenient installer that you can execute directly from the commandline. Feel free to download this file or review it on GitHub if you wish to know more about the inner workings of the installer. The source is plain PHP.
+
+There are in short, two ways to install Composer. Locally as part of your project, or globally as a system wide executable.
+
+Locally#
+
+Installing Composer locally is a matter of just running the installer in your project directory:
+
+curl -sS https://getcomposer.org/installer | php
+Note: If the above fails for some reason, you can download the installer with php instead:
+php -r "readfile('https://getcomposer.org/installer');" | php
+The installer will just check a few PHP settings and then download composer.phar to your working directory. This file is the Composer binary. It is a PHAR (PHP archive), which is an archive format for PHP which can be run on the command line, amongst other things.
+
+Now just run php composer.phar in order to run Composer.
+
+You can install Composer to a specific directory by using the --install-dir option and additionally (re)name it as well using the --filename option:
+
+curl -sS https://getcomposer.org/installer | php -- --install-dir=bin --filename=composer
+Now just run php bin/composer in order to run Composer.
+
+Globally#
+
+You can place the Composer PHAR anywhere you wish. If you put it in a directory that is part of your PATH, you can access it globally. On unixy systems you can even make it executable and invoke it without directly using the php interpreter.
+
+Run these commands to globally install composer on your system:
+
+curl -sS https://getcomposer.org/installer | php
+mv composer.phar /usr/local/bin/composer
+Note: If the above fails due to permissions, run the mv line again with sudo.
+A quick copy-paste version including sudo:
+
+curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
+Note: On some versions of OSX the /usr directory does not exist by default. If you receive the error "/usr/local/bin/composer: No such file or directory" then you must create the directory manually before proceeding: mkdir -p /usr/local/bin.
+Note: For information on changing your PATH, please read the Wikipedia article and/or use Google.
+Now just run composer in order to run Composer instead of php composer.phar.
+
+
+
+
+
+
+
+#####################################################################3
+##How to use composer for staging###########
+composer install
+./init yii	> 0
+copy from frontend/web/ to rest/web/
+Copy from frontend/config/ to rest/config/
+chown apache.apache * -R
+
+chmod 777 -R rest/web/assets
+chmod 777 -R rest/runtime
+# Change Config
+vim common/config/main-local.php
