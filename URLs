@@ -3,5 +3,14 @@ https://svnmanager.bright-creations.com/	--> 192.168.172.4 -->user-->ahmed.taha 
 192.168.172.33	Dev		--> user-->taha     -->pass-->TOrnado30!!   
 192.168.172.35	Staging		-->user-->taha	    -->pass-->TOrnado30!!
 192.168.174.3	fs,samba,dhcp	-->user-->taha	    -->pass-->TOrnado30!!
+192.168.172.101 mikrotech	-->user-->admin	    -->pass-->password	
 ###################################################################################################33333
 DataBase password for local --> Y5pSXwe$%^&#@*()(@#$_=-Se 
+
+
+Wireless password   --> Br7Ybirthday2008Cr
+
+
+
+
+rdesktop-vrdp -r PRIMARYCLIPBOARD -f -u taha -p 'password12' 192.168.172.131

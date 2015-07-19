@@ -23,3 +23,22 @@ INSERT newtable SELECT * FROM oldtable;
 #TO COPY DATABASE;
 
 
+##############################################################################
+To check Data-bases size
+
+
+SELECT table_schema "Data Base Name", 
+sum( data_length + index_length ) / 1024 / 
+1024 "Data Base Size in MB", 
+sum( data_free )/ 1024 / 1024 "Free Space in MB" 
+FROM information_schema.TABLES 
+GROUP BY table_schema ; 
+##################################################################################3
+
+MYSQLDUMP --force --opt --user=$USER --password=$PASSWORD \
+            --databases $db |gzip > "$OUTPUTDIR/$db.sql.gz"
+
+
+
+mysql -u root -p because_php_db < because_php_db.sql
+
