@@ -1,0 +1,34 @@
+Asume you want to block torrent & p2p traffic on 192.168.1.0/24
+replace ip according to your need
+
+
+
+/ip firewall layer7-protocol>
+use winbox to copy paste name=torrentsites
+regexp:
+^.*(get|GET).+(torrent|
+
+thepiratebay|isohunt|entertane|demonoid|btjunkie|mininova|flixflux|
+
+torrentz|vertor|h33t|btscene|bitunity|bittoxic|thunderbytes|
+
+entertane|zoozle|vcdq|bitnova|bitsoup|meganova|fulldls|btbot|
+
+flixflux|seedpeer|fenopy|gpirate|commonbits).*$
+
+
+/ip firewall filter>
+add chain=forward src-address=192.168.1.0/24 layer7-protocol=torrentsites action=drop comment=torrentsites
+add chain=forward src-address=192.168.1.0/24 protocol=17 dst-port=53 layer7-protocol=torrentsites action=drop comment=dropDNS
+add chain=forward src-address=192.168.1.0/24 content=torrent action=drop comment=keyword_drop
+add chain=forward src-address=192.168.1.0/24 content=tracker action=drop comment=trackers_drop
+add chain=forward src-address=192.168.1.0/24 content=getpeers action=drop comment=get_peers_drop
+add chain=forward src-address=192.168.1.0/24 content=info_hash action=drop comment=info_hash_drop
+add chain=forward src-address=192.168.1.0/24 content=announce_peers action=drop comment=announce_peers_drop
+
+& also use default rule to drop p2p traffic which alone is not working for me
+
+add chain=forward src-address=192.168.1.0/24 p2p=all-p2p action=drop comment=p2p_drop
+
+
+Enjoy :)
